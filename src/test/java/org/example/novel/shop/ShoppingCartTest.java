@@ -42,4 +42,16 @@ class ShoppingCartTest {
         Assertions.assertEquals(10, cart.itemsCount());
         Assertions.assertFalse(cart.isEmpty());
     }
+
+    @Test
+    public void totalPriceWorks() {
+        StandardItem item = new StandardItem(1, "Dancing Panda v.2", 5000, Category.TOY, new LoyaltyPoints(5));
+        ShoppingCart cart = new ShoppingCart();
+        int itemCount = 12;
+
+        cart.addItem(item, itemCount);
+        double totalPrice = itemCount * item.price();
+
+        Assertions.assertEquals(totalPrice, cart.totalPrice());
+    }
 }

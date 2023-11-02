@@ -24,7 +24,7 @@ public class ShoppingCart {
     }
 
     public double totalPrice() {
-        return items.stream().mapToDouble(item -> item.priceOfOneItem()).reduce(0, (a, b) -> a + b);
+        return items.stream().mapToDouble(item -> item.priceOfOneItem() * itemsCount()).reduce(0, (a, b) -> a + b);
     }
     public boolean isEmpty() { return items.isEmpty(); }
 
