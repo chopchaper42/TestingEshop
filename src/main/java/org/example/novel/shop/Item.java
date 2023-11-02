@@ -16,6 +16,11 @@ public abstract class Item {
 
     public int id() { return id; }
     public double price() { return price; }
+    public String name() { return name; }
+
+    public boolean isOfCategory(Category category) {
+        return this.category == category;
+    }
 
     @Override
     public String toString() {

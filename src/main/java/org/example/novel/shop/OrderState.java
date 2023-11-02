@@ -2,5 +2,5 @@ package org.example.novel.shop;
 
 public enum OrderState {
     DONE,
-    PROCESSED
+    IN_PROCESS
 }

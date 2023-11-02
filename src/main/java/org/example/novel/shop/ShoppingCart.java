@@ -1,18 +1,26 @@
 package org.example.novel.shop;
 
+import org.example.novel.storage.ItemStock;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ShoppingCart {
-    List<Item> items;
+    List<ItemStock> items;
 
-    public ShoppingCart(List<Item> items) { this.items = items; }
+    /*public ShoppingCart(List<Item> items) {
+        this.items = items.stream().map(i -> new ItemStock(i, 1)).collect(Collectors.toList());
+    }*/
+    public ShoppingCart(List<ItemStock> items) { this.items = items; }
 
-    public ShoppingCart() { this.items = new ArrayList<Item>(); }
+    public ShoppingCart() { this.items = new ArrayList<ItemStock>(); }
 
     public void addItem(Item item) {
-        items.add(item);
+        items.add(new ItemStock(item, 1));
+    }
+    public void addItem(Item item, int count) {
+        items.add(new ItemStock(item, count));
     }
 
     public void removeItem(Item item) {
@@ -22,4 +30,5 @@ public class ShoppingCart {
     public double totalPrice() {
         return items.stream().mapToDouble(item -> item.price()).reduce(0, (a, b) -> a + b);
     }
+    public boolean isEmpty() { return items.isEmpty(); }
 }

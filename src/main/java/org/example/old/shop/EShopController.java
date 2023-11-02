@@ -28,7 +28,7 @@ public class EShopController {
         }
         Order order = new Order(cart, customerName, customerAddress);
         storage.processOrder(order);
-        archive.putOrderToPurchasesArchive(order); // and put to archive. Breaks SRP! TODO:
+        archive.putOrderToPurchasesArchive(order);
     }
 
     public ShoppingCart newCart() {
