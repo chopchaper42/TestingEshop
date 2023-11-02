@@ -13,19 +13,18 @@ public class EShopController {
     }
 
     public void createOrder(ShoppingCart cart, CustomerCredentials credentials) {
-        if (cart.isEmpty()) {
-            System.out.println("Error: the shopping cart is empty!");
-            return;
-        }
+        if (cart.isEmpty())
+            throw new IllegalArgumentException("The cart is empty");
 
-        Order order = new Order(credentials, cart.items);
+        Order order = new Order(credentials, cart.items());
         try {
             storage.processOrder(order);
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            return;
+            throw new RuntimeException(e);
         }
 
         archive.archiveOrder(order);
     }
+
+    public OrdersArchive getArchive() { return this.archive; }
 }

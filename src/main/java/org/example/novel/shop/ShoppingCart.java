@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ShoppingCart {
-    List<ItemStock> items;
+    private List<ItemStock> items;
 
     public ShoppingCart(List<ItemStock> items) { this.items = items; }
 
@@ -31,4 +31,6 @@ public class ShoppingCart {
     public int itemsCount() {
         return items.stream().mapToInt(i -> i.count()).reduce(0, (a, b) -> a + b);
     }
+
+    public List<ItemStock> items() { return this.items; }
 }

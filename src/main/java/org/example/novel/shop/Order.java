@@ -18,4 +18,8 @@ public class Order {
         this.state = OrderState.IN_PROCESS;
     }
 
+    public void setDone() {
+        state = OrderState.DONE;
+    }
+
 }

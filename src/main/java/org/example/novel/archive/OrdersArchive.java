@@ -19,6 +19,7 @@ public class OrdersArchive {
 
     public void archiveOrder(Order order) {
         ordersArchive.add(order);
+        order.setDone();
     }
 
     public List<Order> getArchive() { return ordersArchive; }
