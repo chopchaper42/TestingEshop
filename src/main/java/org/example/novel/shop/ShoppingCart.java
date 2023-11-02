@@ -13,19 +13,22 @@ public class ShoppingCart {
 
     public ShoppingCart() { this.items = new ArrayList<ItemStock>(); }
 
-    public void addItem(Item item) {
-        items.add(new ItemStock(item, 1));
-    }
     public void addItem(Item item, int count) {
         items.add(new ItemStock(item, count));
     }
-
-    public void removeItem(Item item) {
-        items = items.stream().filter(i -> i.id() != item.id()).collect(Collectors.toList());
+    public void removeItem(Item item, int count) {
+        items = items.stream().peek(i -> {
+            if (i.id() == item.id())
+                i.decreaseCount(count);
+        }).collect(Collectors.toList());
     }
 
     public double totalPrice() {
         return items.stream().mapToDouble(item -> item.priceOfOneItem()).reduce(0, (a, b) -> a + b);
     }
     public boolean isEmpty() { return items.isEmpty(); }
+
+    public int itemsCount() {
+        return items.stream().mapToInt(i -> i.count()).reduce(0, (a, b) -> a + b);
+    }
 }
