@@ -9,9 +9,6 @@ import java.util.stream.Collectors;
 public class ShoppingCart {
     List<ItemStock> items;
 
-    /*public ShoppingCart(List<Item> items) {
-        this.items = items.stream().map(i -> new ItemStock(i, 1)).collect(Collectors.toList());
-    }*/
     public ShoppingCart(List<ItemStock> items) { this.items = items; }
 
     public ShoppingCart() { this.items = new ArrayList<ItemStock>(); }
@@ -28,7 +25,7 @@ public class ShoppingCart {
     }
 
     public double totalPrice() {
-        return items.stream().mapToDouble(item -> item.price()).reduce(0, (a, b) -> a + b);
+        return items.stream().mapToDouble(item -> item.priceOfOneItem()).reduce(0, (a, b) -> a + b);
     }
     public boolean isEmpty() { return items.isEmpty(); }
 }
