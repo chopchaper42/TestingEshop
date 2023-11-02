@@ -1,6 +1,6 @@
-package org.example.storage;
+package org.example.old.storage;
 
-import org.example.shop.Item;
+import org.example.old.shop.Item;
 
 
 /**

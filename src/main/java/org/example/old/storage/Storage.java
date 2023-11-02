@@ -1,11 +1,11 @@
-package org.example.storage;
+package org.example.old.storage;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import org.example.shop.Item;
-import org.example.shop.Order;
+import org.example.old.shop.Item;
+import org.example.old.shop.Order;
 
 public class Storage {
 

@@ -1,6 +1,6 @@
-package org.example.archive;
+package org.example.old.archive;
 
-import org.example.shop.Item;
+import org.example.old.shop.Item;
 
 public class ItemPurchaseArchiveEntry {
     private Item refItem;

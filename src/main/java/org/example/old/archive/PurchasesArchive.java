@@ -1,7 +1,7 @@
-package org.example.archive;
+package org.example.old.archive;
 
-import org.example.shop.Item;
-import org.example.shop.Order;
+import org.example.old.shop.Item;
+import org.example.old.shop.Order;
 
 import java.util.ArrayList;
 import java.util.Collection;

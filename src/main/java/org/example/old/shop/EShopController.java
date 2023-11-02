@@ -1,10 +1,10 @@
-package org.example.shop;
+package org.example.old.shop;
 
 import java.util.ArrayList;
 
-import org.example.storage.NoItemInStorage;
-import org.example.storage.Storage;
-import org.example.archive.PurchasesArchive;
+import org.example.old.storage.NoItemInStorage;
+import org.example.old.storage.Storage;
+import org.example.old.archive.PurchasesArchive;
 
 public class EShopController {
 
@@ -28,7 +28,7 @@ public class EShopController {
         }
         Order order = new Order(cart, customerName, customerAddress);
         storage.processOrder(order);
-        archive.putOrderToPurchasesArchive(order);
+        archive.putOrderToPurchasesArchive(order); // and put to archive. Breaks SRP! TODO:
     }
 
     public ShoppingCart newCart() {
@@ -55,12 +55,12 @@ public class EShopController {
 
 
     public static void main(String[] args) throws NoItemInStorage {
-        /*EShopController eShopController = new EShopController(
+        EShopController eShopController = new EShopController(
                 new Storage(), new PurchasesArchive(),
                 new ArrayList<ShoppingCart>(), new ArrayList<Order>()
         );
         
-        *//* make up an artificial data *//*
+//         make up an artificial data
         
         int[] itemCount = {10,10,4,5,10,2};
                
@@ -76,11 +76,11 @@ public class EShopController {
         
         // insert data to the storage
         for (int i = 0; i < storageItems.length; i++) {
-            getStorage().insertItems(storageItems[i], itemCount[i]);
+            eShopController.getStorage().insertItems(storageItems[i], itemCount[i]);
         }
         
         
-        storage.printListOfStoredItems();
+        eShopController.storage.printListOfStoredItems();
         
         System.out.println();
         
@@ -91,9 +91,9 @@ public class EShopController {
         newCart.addItem(storageItems[2]);
         newCart.addItem(storageItems[4]);
         newCart.addItem(storageItems[5]);
-        purchaseShoppingCart(newCart, "Libuse Novakova","Kosmonautu 25, Praha 8");
-        archive.printItemPurchaseStatistics();
-        storage.printListOfStoredItems();
+        eShopController.purchaseShoppingCart(newCart, "Libuse Novakova","Kosmonautu 25, Praha 8");
+        eShopController.archive.printItemPurchaseStatistics();
+        eShopController.storage.printListOfStoredItems();
         
         
         System.out.println();
@@ -102,10 +102,9 @@ public class EShopController {
         System.out.println("TEST RUN:    Trying to purchase an empty shopping cart");
         
         ShoppingCart newEmptyCart = new ShoppingCart();
-        purchaseShoppingCart(newEmptyCart, "Jarmila Novakova", "Spojovaci 23, Praha 3");
+        eShopController.purchaseShoppingCart(newEmptyCart, "Jarmila Novakova", "Spojovaci 23, Praha 3");
         
-        */
-        
+
     }
 
 
